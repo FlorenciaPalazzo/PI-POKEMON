@@ -81,84 +81,68 @@ try{
 })
 
 
-//Busqueda por Nombre
-router.get('/nombre', async(req, res, next) => {
+
+router.get('/nombre', async(req, res) => {
+ try{
     let { nombre } = req.query
+    let allDataApiDB = await getAllPokemonsApiDB();
 
-    if(nombre) {
-        try {
-            let pokeDB = await Pokemon.findOne({
-                where: {
-                    nombre: nombre
-                    
-                    // {
-                    //     [Op.iLike]: `%${nombre}%`, 
-                    // },
-                },
-                include: {
-                    model: Type,
-                    attributes: ["nombre"],  
-                }
-            });
-
-                if(pokeDB) {
-                    res.status(200).send(pokeDB);
-
-                    
-                } else {
-                    let pokemonData = (await axios.get(`https://pokeapi.co/api/v2/pokemon/${nombre.toLowerCase()}`)).data;
-
-                    let dataApi = {
-                        id: pokemonData.id,
-                        img: pokemonData.sprites.other.dream_world.front_default, 
-                        tipo: pokemonData.types[0].type.name,
-                        nombre: pokemonData.name,
-                        vida: pokemonData.stats[0].base_stat,
-                        fuerza: pokemonData.stats[1].base_stat,
-                        defensa: pokemonData.stats[2].base_stat,
-                        velocidad: pokemonData.stats[5].base_stat,
-                        altura: pokemonData.height,
-                        peso: pokemonData.weight,
-                        }
-           
-                    res.status(200).send(dataApi)
-        }
-        }
-        catch {
-           res.status(404).send('Pokemon not found') ;
-          }
+    if(nombre){
+        let allDataName = await allDataApiDB.filter(p =>p.nombre.toLowerCase()===nombre.toLocaleLowerCase())
+        console.log(nombre)
+        console.log(allDataName)
+            if(!allDataName.length){
+                return res.status(404).send('No existe el nombre del pokemon')    
+            }
+            
+            res.status(200).send(allDataName) //devuelve el nombre del pokemon
+            
+    }else{
+       res.status(200).send(allDataApiDB) //devuelve todos los pokemones
     }
+}catch(err){
+   
+    console.log('Error')
+}
 })
+
+
+
+
+
 //Busqueda por ID
 router.get('/:id',async (req, res) => {
     let {id} = req.params
-    try{
+
     if(!id.includes('-')){
-        const apiUrl = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-        const idApi={
-                id: apiUrl.data.id,
-                img: apiUrl.data.sprites.other.dream_world.front_default, 
-                tipo: apiUrl.data.types[0].type.name,
-                nombre: apiUrl.data.name,
-                vida: apiUrl.data.stats[0].base_stat,
-                fuerza: apiUrl.data.stats[1].base_stat,
-                defensa: apiUrl.data.stats[2].base_stat,
-                velocidad: apiUrl.data.stats[5].base_stat,
-                altura: apiUrl.data.height,
-                peso: apiUrl.data.weight,
+        try{
+                const apiUrl = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id.toLowerCase()}`)
+                const idApi={
+                        id: apiUrl.data.id,
+                        img: apiUrl.data.sprites.other.dream_world.front_default, 
+                        tipo: apiUrl.data.types[0].type.name,
+                        nombre: apiUrl.data.name,
+                        vida: apiUrl.data.stats[0].base_stat,
+                        fuerza: apiUrl.data.stats[1].base_stat,
+                        defensa: apiUrl.data.stats[2].base_stat,
+                        velocidad: apiUrl.data.stats[5].base_stat,
+                        altura: apiUrl.data.height,
+                        peso: apiUrl.data.weight,
+                }
+                res.status(200).send(idApi)
+        }catch (err){
+            res.send('No se encontro tu pokemon por id en la Api')
         }
-        res.status(200).send(idApi)
 
     }else{
-        const idDB= await Pokemon.findByPk({
-            where:{
-                id:id
-            }
-        })
+
+    try{
+        const idDB= await Pokemon.findByPk(id,{include: Type})
+        console.log(idDB)
         const idDBData={
                 id: idDB.id,
                 img: idDB.img, 
-                tipo: idDB.tipo,
+                tipo: idDB.types.map((t) => t.nombre),     
                 nombre: idDB.nombre,
                 vida: idDB.vida,
                 fuerza: idDB.fuerza,
@@ -167,15 +151,15 @@ router.get('/:id',async (req, res) => {
                 altura: idDB.altura,
                 peso: idDB.peso
         }
-            if(!idDB){
-                res.status(404).send('No se encontro tu id')
-            }else{
+            if(idDB){
                 res.status(200).send(idDBData)
             }
+        
+        }catch(err){
+            res.send('No se encontro tu pokemon por id en la Base de datos')
         }
-    }catch(err){
-        console.log(err)
-    }
+    }       
+
 })
 
 
@@ -214,6 +198,7 @@ try{
         where: {nombre: tipo}
     
     })
+    console.log(typeDb)
 
     pokemonCreated.addType(typeDb)
     res.send('Pokemon Creado')
@@ -331,3 +316,57 @@ module.exports = router;
 //     console.log(err)
 //     }                  
 // })
+
+
+//Busqueda por Nombre
+// router.get('/nombre', async(req, res) => {
+//     let { nombre } = req.query
+
+//     if(nombre) {
+//         try {
+//             let pokeDB = await Pokemon.findOne({
+//                 where: {
+//                     nombre: nombre
+                    
+//                     // {
+//                     //     [Op.iLike]: `%${nombre}%`, 
+//                     // },
+//                 },
+//                 include: {
+//                     model: Type,
+//                     attributes: ["nombre"],
+//                     through:{
+//                         attributes: [],
+//                     }  
+//                 }
+//             });
+
+//                 if(pokeDB) {
+//                     res.status(200).send(pokeDB);
+
+                    
+//                 } else {
+//                     let pokemonData = (await axios.get(`https://pokeapi.co/api/v2/pokemon/${nombre.toLowerCase()}`)).data;
+
+//                     let dataApi = {
+//                         id: pokemonData.id,
+//                         img: pokemonData.sprites.other.dream_world.front_default, 
+//                         tipo: pokemonData.types[0].type.name,
+//                         nombre: pokemonData.name,
+//                         vida: pokemonData.stats[0].base_stat,
+//                         fuerza: pokemonData.stats[1].base_stat,
+//                         defensa: pokemonData.stats[2].base_stat,
+//                         velocidad: pokemonData.stats[5].base_stat,
+//                         altura: pokemonData.height,
+//                         peso: pokemonData.weight,
+//                         }
+           
+//                     res.status(200).send(dataApi)
+//         }
+//         }
+//         catch {
+//            res.status(404).send('Pokemon not found') ;
+//           }
+//     }
+// })
+//probar variable allpokemons + api+db y filtrar
