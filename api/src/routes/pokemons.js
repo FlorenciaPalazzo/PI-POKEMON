@@ -24,7 +24,7 @@ let getData = async(i) =>{
         id: pokemonData.data.id,
         img: pokemonData.data.sprites.other.dream_world.front_default, 
         tipo: pokemonData.data.types[0].type.name,
-        nombre: pokemonData.data.name,
+        nombre: pokemonData.data.name.charAt(0).toUpperCase()+ pokemonData.data.name.slice(1),
         vida: pokemonData.data.stats[0].base_stat,
         fuerza: pokemonData.data.stats[1].base_stat,
         defensa: pokemonData.data.stats[2].base_stat,
@@ -72,23 +72,18 @@ const getAllPokemonsApiDB= async() =>{
 
 router.get('/',async (req, res) => {
     
+// try{
+//     const dataApiyDB = await getAllPokemonsApiDB()
+//     return res.status(200).json(dataApiyDB)
+// }catch (err){
+//     console.log(err)
+// }
 try{
-    const dataApiyDB = await getAllPokemonsApiDB()
-    return res.status(200).json(dataApiyDB)
-}catch (err){
-    console.log(err)
-}
-})
-
-
-
-router.get('/nombre', async(req, res) => {
- try{
     let { nombre } = req.query
     let allDataApiDB = await getAllPokemonsApiDB();
 
     if(nombre){
-        let allDataName = await allDataApiDB.filter(p =>p.nombre.toLowerCase()===nombre.toLocaleLowerCase())
+        let allDataName = await allDataApiDB.filter(p =>p.nombre.toLowerCase()===nombre.toLowerCase())
         console.log(nombre)
         console.log(allDataName)
             if(!allDataName.length){
@@ -102,9 +97,35 @@ router.get('/nombre', async(req, res) => {
     }
 }catch(err){
    
-    console.log('Error')
+    res.status(404).send(err)
 }
 })
+
+
+
+// router.get('/nombre', async(req, res) => {
+//  try{
+//     let { nombre } = req.query
+//     let allDataApiDB = await getAllPokemonsApiDB();
+
+//     if(nombre){
+//         let allDataName = await allDataApiDB.filter(p =>p.nombre.toLowerCase()===nombre.toLocaleLowerCase())
+//         console.log(nombre)
+//         console.log(allDataName)
+//             if(!allDataName.length){
+//                 return res.status(404).send('No existe el nombre del pokemon')    
+//             }
+            
+//             res.status(200).send(allDataName) //devuelve el nombre del pokemon
+            
+//     }else{
+//        res.status(200).send(allDataApiDB) //devuelve todos los pokemones
+//     }
+// }catch(err){
+   
+//     console.log('Error')
+// }
+// })
 
 
 
@@ -121,7 +142,7 @@ router.get('/:id',async (req, res) => {
                         id: apiUrl.data.id,
                         img: apiUrl.data.sprites.other.dream_world.front_default, 
                         tipo: apiUrl.data.types[0].type.name,
-                        nombre: apiUrl.data.name,
+                        nombre: apiUrl.data.name.charAt(0).toUpperCase()+apiUrl.data.name.slice(1),
                         vida: apiUrl.data.stats[0].base_stat,
                         fuerza: apiUrl.data.stats[1].base_stat,
                         defensa: apiUrl.data.stats[2].base_stat,
@@ -131,7 +152,7 @@ router.get('/:id',async (req, res) => {
                 }
                 res.status(200).send(idApi)
         }catch (err){
-            res.send('No se encontro tu pokemon por id en la Api')
+            res.status(404).send('No se encontro tu pokemon por id en la Api')
         }
 
     }else{
@@ -143,7 +164,7 @@ router.get('/:id',async (req, res) => {
                 id: idDB.id,
                 img: idDB.img, 
                 tipo: idDB.types.map((t) => t.nombre),     
-                nombre: idDB.nombre,
+                nombre: idDB.nombre.charAt(0).toUpperCase()+idDB.nombre.slice(1),
                 vida: idDB.vida,
                 fuerza: idDB.fuerza,
                 defensa: idDB.defensa,
@@ -156,7 +177,7 @@ router.get('/:id',async (req, res) => {
             }
         
         }catch(err){
-            res.send('No se encontro tu pokemon por id en la Base de datos')
+            res.status(404).send('No se encontro tu pokemon por id en la Base de datos')
         }
     }       
 
@@ -204,7 +225,7 @@ try{
     res.send('Pokemon Creado')
 
 }catch (err){
-    console.log(err)
+    res.status(404).send(err)
 }
 
 })
