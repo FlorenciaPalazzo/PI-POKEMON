@@ -1,4 +1,4 @@
-import { GET_ALL_POKEMONS,GET_POKEMONS_NAME,GET_POKEMONS_ID,GET_POKEMONS_TYPE,FILTER_BY_TYPE,CREATE_POKEMONS, CLEAR_PAGE } from "./action_types";
+import { GET_ALL_POKEMONS,GET_POKEMONS_NAME,GET_POKEMONS_ID,GET_POKEMONS_TYPE,FILTER_BY_TYPE,CREATE_POKEMONS, CLEAR_PAGE,FILTER_CREATED } from "./action_types";
 import  axios from 'axios';
 
 
@@ -30,6 +30,8 @@ export function getPokemonsName(nombre){
         } 
 }
 
+
+
 export function getPokemonsType(){
         
   return async function(dispatch){ 
@@ -39,6 +41,7 @@ export function getPokemonsType(){
       } 
 }
 
+
 export function filterPokemonsbyType(payload){
   return{
     type: FILTER_BY_TYPE,
@@ -47,6 +50,13 @@ export function filterPokemonsbyType(payload){
 }
 
 
+
+export function filterCreated(payload){
+  return{
+    type: FILTER_CREATED,
+    payload
+  }
+}
 
 export function clearPage(){
     return {

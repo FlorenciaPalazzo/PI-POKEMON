@@ -23,7 +23,7 @@ let getData = async(i) =>{
     let pokemon={
         id: pokemonData.data.id,
         img: pokemonData.data.sprites.other.dream_world.front_default, 
-        tipo: pokemonData.data.types[0].type.name,
+        tipo: pokemonData.data.types.map((data)=> data.type.name),
         nombre: pokemonData.data.name.charAt(0).toUpperCase()+ pokemonData.data.name.slice(1),
         vida: pokemonData.data.stats[0].base_stat,
         fuerza: pokemonData.data.stats[1].base_stat,
@@ -47,7 +47,7 @@ return arrayDataPokemons
 
 //trae la info de la db
 const getDB = async ()=>{
-    return await Pokemon.findAll({ 
+    let getData = await Pokemon.findAll({ 
         include:{
             model: Type,
             attributes: ['nombre'],
@@ -56,7 +56,37 @@ const getDB = async ()=>{
                 attributes: [],
             }
         }
-    })       
+    }) 
+    
+  getData = getData.map(({
+    id,
+    img , 
+    types,
+    nombre, 
+    vida,
+    fuerza, 
+    defensa, 
+    velocidad ,
+    altura, 
+    peso   
+   }) =>({
+
+    id,
+    img , 
+    tipo: types.map((t)=>t.nombre),
+    nombre, 
+    vida,
+    fuerza, 
+    defensa, 
+    velocidad ,
+    altura, 
+    peso   
+
+   })
+   
+   )
+   return getData
+
 }
 
 
@@ -219,7 +249,7 @@ try{
         where: {nombre: tipo}
     
     })
-    console.log(typeDb)
+    //console.log(typeDb)
 
     pokemonCreated.addType(typeDb)
     res.send('Pokemon Creado')

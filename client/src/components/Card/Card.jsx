@@ -7,7 +7,7 @@ export default function Card ({nombre, img, tipo, id}){
             <div>
                 <h1><Link to ={`/home/detail/${id}`} >{nombre}</Link></h1>
                 <img src={img} alt="img not found" ></img>
-                <h3>{tipo}</h3>
+                <h3>{tipo.join(" ")}</h3>
             </div>
         </div>
 
