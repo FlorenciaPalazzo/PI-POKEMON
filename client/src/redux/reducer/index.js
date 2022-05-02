@@ -3,13 +3,9 @@ const initialState = {
     pokemons: [],
     pokemons_copy:[],
    
-    
     pokemon_detail: [],
     pokemon_types: [],
     
-    order: ""
-   
-
   };
   
   export default function reducer(state = initialState, { type, payload }) {
@@ -41,6 +37,7 @@ const initialState = {
     
       ///FILTER TYPE///
       case FILTER_BY_TYPE : 
+     
       const allPokemonsType = state.pokemons_copy
      const allPokemonsType2= allPokemonsType.filter((t) =>{
         if(t.tipo?.includes(payload)){
@@ -83,75 +80,62 @@ const initialState = {
 
         ///FILTER ORDER NAME A-Z///
         case  FILTER_ORDER:
-
-        if(payload === 'asc'){
-        let sort= state.pokemons_copy.sort(function(a,b){
-
-            if(a.nombre > b.nombre){
-            return 1
-             }
-            if(b.nombre > a.nombre){
-            return -1
-              }
-             return 0  
-        })
-         return {
-           ...state,
-           pokemons: sort
-         }
-        }else if(payload === 'desc'){
-            let sortZ=state.pokemons_copy.sort(function(a,b){
-
-            if(a.nombre > b.nombre){
-              return -1
-            }
-            if(b.nombre > a.nombre){
-              return 1
-            }
-
-            })
+          if(payload === "all"){
             return{
               ...state,
-              pokemons: sortZ
+              pokemons: [...state.pokemons_copy]
             }
-        }
-
+          }
+          if(payload === "asc"){
+            return{
+              ...state,
+              pokemons: [...state.pokemons_copy].sort((a,b)=>{
+                if(a.nombre > b.nombre) return 1
+                if(a.nombre < b.nombre) return -1
+                return 0
+              })
+            }
+          }
+          if(payload === "desc"){
+            return{
+              ...state,
+              pokemons: [...state.pokemons_copy].sort((a,b)=>{
+                if(a.nombre > b.nombre) return -1
+                if(a.nombre < b.nombre) return 1
+                return 0
+              })
+            }
+          }
 
 
         ///FILTER ORDER FUERZA///
         case  FILTER_ORDER_FUERZA:
 
-        if(payload === 'menor'){
-        let sort= state.pokemons_copy.sort(function(a,b){
-
-            if(a.fuerza > b.fuerza){
-            return 1
-             }
-            if(b.fuerza > a.fuerza){
-            return -1
-              }
-             return 0  
-        })
-         return {
-           ...state,
-           pokemons: sort
-         }
-        }else if(payload === 'mayor'){
-            let sortZ=state.pokemons_copy.sort(function(a,b){
-
-            if(a.fuerza > b.fuerza){
-              return -1
-            }
-            if(b.fuerza > a.fuerza){
-              return 1
-            }
-
-            })
+          if(payload === "all"){
             return{
               ...state,
-              pokemons: sortZ
+              pokemons: [...state.pokemons_copy]
             }
-        }
+          }
+          if(payload === "menor"){
+            return{
+              ...state,
+              pokemons: [...state.pokemons_copy].sort((a,b)=>{
+                if(a.fuerza > b.fuerza) return 1
+                if(a.fuerza < b.fuerza) return -1
+                return 0
+              })
+            }
+          }     if(payload === "mayor"){
+            return{
+              ...state,
+              pokemons: [...state.pokemons_copy].sort((a,b)=>{
+                if(a.fuerza > b.fuerza) return -1
+                if(a.fuerza < b.fuerza) return 1
+                return 0
+              })
+            }
+          }
             
             
         
@@ -159,40 +143,9 @@ const initialState = {
       case CLEAR_PAGE: return{
         ...state,
         pokemon_detail:[]
-
       }
       default:
         return state;
     }
   }
 
-
-
-
-        //  let ordenPorNombre = payload === 'asc'?
-
-        //    state.pokemons.sort(function(a,b){
-        //       if(a.nombre > b.nombre){
-        //         return 1
-        //       }
-        //       if(b.nombre > a.nombre){
-        //         return -1
-        //       }
-        //       return 0
-        //    }):
-          
-        //   state.pokemons.sort(function(a,b){
-        //     if(a.nombre > b.nombre){
-        //       return -1
-        //     }
-        //     if(b.nombre > a.nombre){
-        //       return 1
-        //     }
-        //     return 0
-        //  })
-
-        //  console.log(ordenPorNombre)
-        //  return{
-        //    ...state,
-        //    pokemons: ordenPorNombre
-        //   } 

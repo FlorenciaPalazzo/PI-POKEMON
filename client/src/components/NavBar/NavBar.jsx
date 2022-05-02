@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
-import { filterPokemonsbyType, getAllPokemons,getPokemonsType, filterCreated, filterOrderAZ} from '../../redux/actions';
+import { filterPokemonsbyType, getAllPokemons,getPokemonsType, filterCreated, filterOrder, filterOrderFuerza} from '../../redux/actions';
 import Search from '../Search/Search'
 
 import './navBar.css'
@@ -41,6 +41,18 @@ function handleFilterCreated(e){
     dispatch(filterCreated(e.target.value))
   }
 
+
+  function handlefilterOrderAZ(e){
+    e.preventDefault()
+    dispatch(filterOrder(e.target.value))
+  }
+
+  function handlefilterOrderFuerza(e){
+    e.preventDefault()
+    dispatch(filterOrderFuerza(e.target.value))
+    
+  }
+
   
 
   return(
@@ -48,7 +60,7 @@ function handleFilterCreated(e){
     <div className='bg'>
         <ul>
             <li>
-            <Link to='/home' ><button onClick={(e)=> handleClick(e)}>POKEHOME</button></Link>
+                <Link to='/home' ><button onClick={(e)=> handleClick(e)}>POKEHOME</button></Link>
             </li>
 
 
@@ -63,6 +75,25 @@ function handleFilterCreated(e){
         </ul>
            
            
+          <div>
+              <select onChange={(e)=> handlefilterOrderAZ(e)}>
+                  <option value="">Orden Alfabético:</option> 
+                  <option value={'all'}>Todos</option>
+                  <option value={'asc'}>Ascendente</option>
+                  <option value={'desc'}>Descendente</option>
+              </select>
+            </div> 
+
+            
+          <div>
+              <select onChange={(e)=> handlefilterOrderFuerza(e)}>
+                  <option value="">Orden Fuerza:</option> 
+                  <option value={'all'}>Todos</option>
+                  <option value={'mayor'}>Mayor</option>
+                  <option value={'menor'}>Menor</option>
+              </select>
+            </div> 
+          
 
             <div>
               <select onChange={(e)=> handleTypes(e)}>
