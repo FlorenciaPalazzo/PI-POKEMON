@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
-import { filterPokemonsbyType, getAllPokemons,getPokemonsType, filterCreated} from '../../redux/actions';
+import { filterPokemonsbyType, getAllPokemons,getPokemonsType, filterCreated, filterOrderAZ} from '../../redux/actions';
 import Search from '../Search/Search'
 
 import './navBar.css'
@@ -15,15 +15,15 @@ import './navBar.css'
 export default function NavBar() {
 
   const types= useSelector((state)=> state.pokemon_types)
-
+  
   const dispatch  = useDispatch()
 
-  
+
   useEffect(()=>{
     
     dispatch(getPokemonsType())
+    
   },[dispatch])
-  
 
   
   function handleClick(e){
@@ -31,17 +31,17 @@ export default function NavBar() {
     dispatch(getAllPokemons())
   }
   
-
  function handleTypes(e){
+  e.preventDefault();
     dispatch(filterPokemonsbyType(e.target.value))
   }
 
 function handleFilterCreated(e){
+  e.preventDefault();
     dispatch(filterCreated(e.target.value))
   }
 
-
-
+  
 
   return(
    
@@ -51,27 +51,26 @@ function handleFilterCreated(e){
             <Link to='/home' ><button onClick={(e)=> handleClick(e)}>POKEHOME</button></Link>
             </li>
 
-            <select>
-                <option value={'asc'}>Asc</option>
-                <option value={'desc'}>Desc</option>
-              </select>
 
             <li>
                <Search/>
             </li>
+            
             <li>
-              <button>Crea tu pokeamigo</button>
+              <Link to='/home/create'><button>Crea tu pokeamigo</button></Link>
             </li>
             
         </ul>
+           
+           
 
             <div>
-               <select onChange={(e)=> handleTypes(e)}>
+              <select onChange={(e)=> handleTypes(e)}>
                                   <option value="">Tipo:</option> 
                  {types?.map((p, i )=>(<option key={i}value={p}>{p}</option>))}  
                   
               </select> 
-            </div>
+            </div> 
 
 
             <div>

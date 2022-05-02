@@ -23,14 +23,13 @@ export default function Search(){
         SetNombre("")
     }
 
+
     return(
         <div>
             <form>
                 <input onChange={(e)=>handleInputChange(e)} value ={nombre} type='text' placeholder='ingrese el nombre del pokemon'/>
                 <button onClick={(e)=> handleSubmit(e)} type='submit'>Atrapalo ya!</button>
             </form>
-
-           
         </div>
     )
 }

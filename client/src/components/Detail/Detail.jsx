@@ -3,8 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { clearPage, getPokemonsId } from "../../redux/actions";
-
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 export  default function Detail (){
@@ -26,11 +25,14 @@ export  default function Detail (){
   
     return(
         <div>
+
+          <div><Link to='/home'><button>VOLVER POKEHOME</button></Link></div>
+
            { detailPokemon.nombre?
            <div>
                 <h1>{detailPokemon.nombre}</h1>
                 <img src={detailPokemon.img} alt="img not found" ></img>
-                <h3>Tipo: {detailPokemon.tipo}</h3>
+                <h3>Tipo: {detailPokemon.tipo.join("-")}</h3>
                 <h3>Vida: {detailPokemon.vida}</h3>
                 <h3>Fuerza: {detailPokemon.fuerza}</h3>
                 <h3>Defensa: {detailPokemon.defensa}</h3>

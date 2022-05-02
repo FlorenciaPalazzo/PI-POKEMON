@@ -58,10 +58,12 @@ const getDB = async ()=>{
         }
     }) 
     
+
+    //[{ }{ }{ }]
   getData = getData.map(({
     id,
     img , 
-    types,
+    types, // ES EL NOOMBRE DE LA TABLA DE SQL
     nombre, 
     vida,
     fuerza, 
@@ -171,7 +173,7 @@ router.get('/:id',async (req, res) => {
                 const idApi={
                         id: apiUrl.data.id,
                         img: apiUrl.data.sprites.other.dream_world.front_default, 
-                        tipo: apiUrl.data.types[0].type.name,
+                        tipo: apiUrl.data.types.map((data)=> data.type.name),
                         nombre: apiUrl.data.name.charAt(0).toUpperCase()+apiUrl.data.name.slice(1),
                         vida: apiUrl.data.stats[0].base_stat,
                         fuerza: apiUrl.data.stats[1].base_stat,
