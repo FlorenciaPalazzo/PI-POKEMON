@@ -1,4 +1,17 @@
-import { GET_ALL_POKEMONS,GET_POKEMONS_NAME,GET_POKEMONS_ID,CLEAR_PAGE,FILTER_BY_TYPE,GET_POKEMONS_TYPE,FILTER_CREATED,FILTER_ORDER,FILTER_ORDER_FUERZA } from "../actions/action_types";
+import { 
+  GET_ALL_POKEMONS,
+  GET_POKEMONS_NAME,
+  GET_POKEMONS_ID,
+  GET_POKEMONS_TYPE,
+
+  FILTER_BY_TYPE,
+  FILTER_CREATED,
+  FILTER_ORDER,
+  FILTER_ORDER_FUERZA,
+
+  POST_POKEMON,
+
+  CLEAR_PAGE,} from "../actions/action_types";
 const initialState = {
     pokemons: [],
     pokemons_copy:[],
@@ -135,6 +148,11 @@ const initialState = {
                 return 0
               })
             }
+          }
+
+          //POST POKEMONS
+          case POST_POKEMON: return{
+            ...state,
           }
             
             

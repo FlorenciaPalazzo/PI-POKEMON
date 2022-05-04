@@ -14,7 +14,9 @@ module.exports = (sequelize) => {
     nombre: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
+    
 
     vida:{
       type:DataTypes.INTEGER
@@ -38,6 +40,10 @@ module.exports = (sequelize) => {
 
     peso: {
       type:DataTypes.INTEGER 
+    },
+
+    img: {
+      type: DataTypes.STRING,
     }
     
 

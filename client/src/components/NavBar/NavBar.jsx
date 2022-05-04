@@ -12,6 +12,7 @@ import './navBar.css'
 
 
 
+
 export default function NavBar() {
 
   const types= useSelector((state)=> state.pokemon_types)
@@ -28,27 +29,32 @@ export default function NavBar() {
   
   function handleClick(e){
     e.preventDefault();
+    
     dispatch(getAllPokemons())
   }
   
  function handleTypes(e){
   e.preventDefault();
+  
     dispatch(filterPokemonsbyType(e.target.value))
   }
 
 function handleFilterCreated(e){
   e.preventDefault();
+  
     dispatch(filterCreated(e.target.value))
   }
 
 
   function handlefilterOrderAZ(e){
     e.preventDefault()
+    
     dispatch(filterOrder(e.target.value))
   }
 
   function handlefilterOrderFuerza(e){
     e.preventDefault()
+    
     dispatch(filterOrderFuerza(e.target.value))
     
   }
@@ -58,24 +64,24 @@ function handleFilterCreated(e){
   return(
    
     <div className='bg'>
-        <ul>
-            <li>
+     
+            <div className='alineado'>
                 <Link to='/home' ><button onClick={(e)=> handleClick(e)}>POKEHOME</button></Link>
-            </li>
+            </div>
 
 
-            <li>
+            <div className='alineado'>
                <Search/>
-            </li>
+            </div>
             
-            <li>
+            <div className='alineado'>
               <Link to='/home/create'><button>Crea tu pokeamigo</button></Link>
-            </li>
+             </div>
             
-        </ul>
            
+        
            
-          <div>
+          <div className='alineado'>
               <select onChange={(e)=> handlefilterOrderAZ(e)}>
                   <option value="">Orden Alfabético:</option> 
                   <option value={'all'}>Todos</option>
@@ -85,7 +91,7 @@ function handleFilterCreated(e){
             </div> 
 
             
-          <div>
+          <div className='alineado'>
               <select onChange={(e)=> handlefilterOrderFuerza(e)}>
                   <option value="">Orden Fuerza:</option> 
                   <option value={'all'}>Todos</option>
@@ -95,7 +101,7 @@ function handleFilterCreated(e){
             </div> 
           
 
-            <div>
+            <div className='alineado'>
               <select onChange={(e)=> handleTypes(e)}>
                                   <option value="">Tipo:</option> 
                  {types?.map((p, i )=>(<option key={i}value={p}>{p}</option>))}  
@@ -104,7 +110,7 @@ function handleFilterCreated(e){
             </div> 
 
 
-            <div>
+            <div className='alineado'>
             <select onChange={(e)=> handleFilterCreated(e)}>
                 <option value={"All"}>Todos</option>
                 <option value={"created"}>Creado</option>

@@ -1,0 +1,13 @@
+.background_home{
+   
+    background-image: url("https://images6.alphacoders.com/114/thumb-1920-1140114.jpg");
+   background-size: cover;
+   background-position: center center;
+   background-attachment: fixed;
+  
+   height:98vh;
+   width: 100vw;
+   padding: 1rem,0rem;
+   box-sizing: border-box;
+
+}

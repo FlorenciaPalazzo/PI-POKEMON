@@ -6,6 +6,7 @@ import Card from "../Card/Card";
 import { getAllPokemons } from "../../redux/actions/index";
 import NavBar from "../NavBar/NavBar";
 import Pagination from "../Pagination/Pagination";
+import './Home.css'
 
 
 
@@ -34,7 +35,7 @@ export default function Home() {
 
     return (
       
-    <div>
+    <div className="background_home">
      
       <NavBar />
      
@@ -47,14 +48,23 @@ export default function Home() {
        currentPokemons.map(p => <Card 
         nombre={p.nombre} img={p.img} tipo={p.tipo} id={p.id} key={p.id}
        />  
-        ):(<h1>Cargando....</h1>)         
-      
-      }
+        )
+        :
+        (<h1>Cargando....</h1>)         
+      }   
+
+  
     </div>
        
     ) 
 }
 
 
+// //c.img? c.img: <img src='url'/>
 
 
+// <div>
+//       <img src='mario.gif' width= '500px' alt='cargandoo..' />
+//       <h1 className='cargando'>Cargando...</h1>
+//      </div>
+    

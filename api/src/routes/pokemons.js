@@ -218,9 +218,9 @@ router.get('/:id',async (req, res) => {
 
 
 //Crea un nuevo Pokemon
-router.post('/',async (req, res) => {
+router.post('/',async (req, res,next) => {
 
-try{
+
     let ={
         img, 
         nombre ,
@@ -233,9 +233,14 @@ try{
         peso,
     }= req.body
 
-   if(!nombre){
-       res.status(404).send('Ingrese nombre de Pokemon para poder crearlo')
-   }     
+    if(!nombre){
+        res.status(404).send('Ingrese nombre de Pokemon para poder crearlo')
+    }
+
+    if(!img){
+        img ="https://w7.pngwing.com/pngs/175/268/png-transparent-kavaii-pikachu-chibi-ero-kawaii-pikachu-poster-aesthetics-snout.png"
+    }     
+    try{
 
     let pokemonCreated = await Pokemon.create({
         img, 
@@ -257,7 +262,8 @@ try{
     res.send('Pokemon Creado')
 
 }catch (err){
-    res.status(404).send(err)
+    next(err)
+    //res.status(404).send(err)
 }
 
 })
@@ -423,3 +429,51 @@ module.exports = router;
 //     }
 // })
 //probar variable allpokemons + api+db y filtrar
+
+
+
+
+
+router.post('/',async (req, res) => {
+
+try{
+    let ={
+        img, 
+        nombre ,
+        tipo,
+        vida,
+        fuerza ,
+        defensa,
+        velocidad,
+        altura,
+        peso,
+    }= req.body
+
+   if(!nombre){
+       res.status(404).send('Ingrese nombre de Pokemon para poder crearlo')
+   }     
+
+    let pokemonCreated = await Pokemon.create({
+        img, 
+        nombre ,
+        vida,
+        fuerza ,
+        defensa,
+        velocidad,
+        altura,
+        peso,})
+    
+    let typeDb = await Type.findAll({
+        where: {nombre: tipo}
+    
+    })
+    //console.log(typeDb)
+
+    pokemonCreated.addType(typeDb)
+    res.send('Pokemon Creado')
+
+}catch (err){
+    res.status(404).send(err)
+}
+
+})

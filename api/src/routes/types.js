@@ -11,7 +11,8 @@ try{
        let getData = await apiUrl.data.results.map((e) =>e.name)
 
        let tipos= await getData.map(t=>
-                    Type.create({nombre:t})
+                    Type.findOrCreate(
+                     { where:{nombre:t}})
                     )
 
         res.status(200).send(getData)      

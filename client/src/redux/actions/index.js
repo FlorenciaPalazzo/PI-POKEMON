@@ -1,4 +1,14 @@
-import { GET_ALL_POKEMONS,GET_POKEMONS_NAME,GET_POKEMONS_ID,GET_POKEMONS_TYPE,FILTER_BY_TYPE,CREATE_POKEMONS, CLEAR_PAGE,FILTER_CREATED,FILTER_ORDER,FILTER_ORDER_FUERZA } from "./action_types";
+import { 
+  GET_ALL_POKEMONS,
+  GET_POKEMONS_NAME,
+  GET_POKEMONS_ID,
+  GET_POKEMONS_TYPE,
+  FILTER_BY_TYPE, 
+  CLEAR_PAGE,
+  FILTER_CREATED,
+  FILTER_ORDER,
+  FILTER_ORDER_FUERZA,
+  POST_POKEMON } from "./action_types";
 import  axios from 'axios';
 
 
@@ -39,6 +49,14 @@ export function getPokemonsType(){
       const payload = await response.data
       dispatch({type: GET_POKEMONS_TYPE , payload })
       } 
+}
+
+
+export function postPokemon (payload){
+  return async function(dispatch){
+    const response= await axios.post("http://localhost:3001/pokemons",payload)
+    return response 
+  }
 }
 
 
