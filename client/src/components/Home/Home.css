@@ -1,13 +1,23 @@
-.background_home{
+.home_background{
    
-    background-image: url("https://images6.alphacoders.com/114/thumb-1920-1140114.jpg");
+    background-image: url("https://www.xtrafondos.com/wallpapers/resized/universo-galaxia-3149.jpg?s=large");
    background-size: cover;
    background-position: center center;
    background-attachment: fixed;
   
-   height:98vh;
-   width: 100vw;
+  
+   height:100vh;
+   
    padding: 1rem,0rem;
    box-sizing: border-box;
 
 }
+
+
+/* https://images6.alphacoders.com/113/thumb-1920-1137667.jpg  (tipo paisaje mi nimalista)*/
+
+
+
+/* https://images6.alphacoders.com/114/thumb-1920-1140114.jpg */
+/* https://images6.alphacoders.com/328/thumb-1920-328013.jpg */
+/* "https://images5.alphacoders.com/614/thumb-1920-614955.png */

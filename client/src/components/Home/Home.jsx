@@ -35,7 +35,7 @@ export default function Home() {
 
     return (
       
-    <div className="background_home">
+    <div className="home_background">
      
       <NavBar />
      

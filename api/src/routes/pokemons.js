@@ -220,7 +220,6 @@ router.get('/:id',async (req, res) => {
 //Crea un nuevo Pokemon
 router.post('/',async (req, res,next) => {
 
-
     let ={
         img, 
         nombre ,
@@ -238,7 +237,7 @@ router.post('/',async (req, res,next) => {
     }
 
     if(!img){
-        img ="https://w7.pngwing.com/pngs/175/268/png-transparent-kavaii-pikachu-chibi-ero-kawaii-pikachu-poster-aesthetics-snout.png"
+        img ="https://pngimg.com/uploads/pokemon/pokemon_PNG107.png"
     }     
     try{
 
@@ -262,8 +261,8 @@ router.post('/',async (req, res,next) => {
     res.send('Pokemon Creado')
 
 }catch (err){
-    next(err)
-    //res.status(404).send(err)
+    // next(err)
+    res.status(404).send(err)
 }
 
 })
