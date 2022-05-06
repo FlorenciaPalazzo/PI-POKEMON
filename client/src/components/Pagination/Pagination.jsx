@@ -12,7 +12,7 @@ const pages= allPokemons/pokemonsForPage
  }
  return(
      <nav>
-        
+        <div className="pagination_box">
              {
                  pageNumbers&&pageNumbers.map(n=>(
                      <button key={n} className="pagination" 
@@ -21,7 +21,7 @@ const pages= allPokemons/pokemonsForPage
                  ))
              }
         
-
+        </div>
      </nav>
  )
  

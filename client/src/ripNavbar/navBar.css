@@ -1,0 +1,24 @@
+.bg{
+    background-color: rgba(255, 255, 255, 0.193);
+    height: 5rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    
+}
+
+.alineado{
+    display: inline-block;
+    margin-left: .5rem;
+}
+
+.navbar_inicio{
+    height:2.5rem;
+    width:6rem;
+    float: left;
+    background-color: transparent; 
+    color: #ffffff;
+    border: 0.1px solid #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 6px rgba(255, 255, 255, 0.6)
+}

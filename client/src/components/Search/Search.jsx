@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 //import {Link} from 'react-router-dom'
 import { getPokemonsName } from '../../redux/actions'
 
+import './search.css'
+
 
 
 export default function Search(){
@@ -22,13 +24,15 @@ export default function Search(){
         dispatch(getPokemonsName(nombre))
         SetNombre("")
     }
-
+ 
+    
+    
 
     return(
         <div>
             <form>
-                <input onChange={(e)=>handleInputChange(e)} value ={nombre} type='text' placeholder='ingrese el nombre del pokemon'/>
-                <button onClick={(e)=> handleSubmit(e)} type='submit'>Atrapalo ya!</button>
+                <button  className='search_btn' onClick={(e)=> handleSubmit(e)} type='submit'>Buscar</button>
+                <input  className='search_input'  onChange={(e)=>handleInputChange(e)} value ={nombre} type='text' placeholder='Nombre...'/>
             </form>
         </div>
     )

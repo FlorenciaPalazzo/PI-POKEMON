@@ -1,16 +1,84 @@
+
+.bg{
+    background-color: transparent;
+    height: 5rem;
+    position: relative;
+    
+}
+
+.navbar_btn_inicio{
+    height:3rem;
+    width:6rem;
+    float: left;
+    background-color: transparent; 
+    color: #ffffff;
+    border: 0.1px solid #ffffff;
+    font-size: 15px;
+    
+    box-shadow: 0 6px 6px rgba(255, 255, 255, 0.6);
+    margin-top: 12px;
+    margin-bottom: auto;
+    margin-left: 50px;
+}
+
+ 
+.navbar_alineado{
+ position: relative; 
+ 
+ height: 70px;
+}
+
+.navbar_select{
+    display: inline-block;
+    margin-left:5px;
+    margin-right: 5px;
+    margin-top:25px;
+    
+}
+
+.navbar_select_design{
+    border: none;
+    background-color: rgba(255, 255, 255, 0.30);
+    color: rgb(231, 231, 231);
+    height: 2rem;
+    border-radius:5px ;
+}
+
+.search_box{
+    margin-right: 50px;
+   margin-top: -3rem;
+}
+
+.navbar_btn_crear{
+    
+    height:2rem;
+    width:10rem;
+    background-color: transparent;  
+    color: #ffffff; 
+    border: none; 
+    font-size: 0.9rem; 
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.30);  
+    border-radius:5px ; 
+    float: left; 
+    margin-left: 200px;
+    margin-top: 22px;
+       
+} 
+
+/* --------------------------- */
+
 .home_background{
    
-    background-image: url("https://www.xtrafondos.com/wallpapers/resized/universo-galaxia-3149.jpg?s=large");
+   background-image: url("https://www.xtrafondos.com/wallpapers/resized/universo-galaxia-3149.jpg?s=large");
    background-size: cover;
    background-position: center center;
    background-attachment: fixed;
-  
-  
    height:100vh;
-   
    padding: 1rem,0rem;
    box-sizing: border-box;
-
+   
+  
 }
 
 

@@ -4,6 +4,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { useEffect,useState } from "react";
 import { getPokemonsType, postPokemon } from "../../redux/actions";
 import { useHistory } from "react-router-dom";
+import './create.css'
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -67,12 +68,10 @@ export function validate(input){
         }
 
       //Tipo
-      if(input.tipo.length < 0){
+      if(input.tipo.length === 0){
         errors.tipo = 'Selecciona al menos un tipo de pokemon'   
     }
     
-
-
         return errors   
 }
 
@@ -101,7 +100,8 @@ export default function Create(){
  useEffect(()=>{
      dispatch(getPokemonsType())
     },[]) 
- 
+    
+
  function handleChange(e){
     setInput({
         ...input,
@@ -140,7 +140,15 @@ function handleCheck(e){
           tipo: input.tipo.filter((t)=> t !== e.target.name )
           
       })
-  }   
+  }  
+    setErrors(validate({
+        ...input,
+        tipo: [...input.tipo,e.target.name]
+    }))   
+
+   
+
+
 }
 
 
@@ -167,11 +175,13 @@ function handleSubmit(e){
  }
 
     return(
-        <div>
-            <div><Link to='/home'><button>VOLVER POKEHOME</button></Link></div>
-            <div>
-            <h1>Crea tu Pokeamigo</h1>
 
+        
+        <div className="create_background">
+            <div><Link to='/home'><button>VOLVER POKEHOME</button></Link></div>
+            <div className="create_form">
+                <h1>Crea tu Pokemon</h1>
+            
             <form onSubmit={(e)=>handleSubmit(e)}>
                 <div>
                     <label>Nombre: </label>
@@ -182,7 +192,7 @@ function handleSubmit(e){
                     placeholder="Nombre.." 
                     onChange={(e)=>handleChange(e)}
                     />
-                    <p>{errors.nombre}</p>
+                    {/* <p>{errors.nombre}</p> */}
                 </div>
 
                 <div>
@@ -205,7 +215,7 @@ function handleSubmit(e){
                     placeholder="0"
                     onChange={(e)=>handleChange(e)}   
                 />
-                    <p>{errors.vida}</p>
+                    {/* <p>{errors.vida}</p> */}
                 </div>
 
                 <div>
@@ -217,7 +227,7 @@ function handleSubmit(e){
                     placeholder="0"
                     onChange={(e)=>handleChange(e)}
                     />
-                    <p>{errors.fuerza}</p>
+                    {/* <p>{errors.fuerza}</p> */}
                 </div>
 
                 <div>   
@@ -229,7 +239,7 @@ function handleSubmit(e){
                     placeholder="0"
                     onChange={(e)=>handleChange(e)}
                     />
-                    <p>{errors.defensa}</p>
+                    {/* <p>{errors.defensa}</p> */}
                 </div>
 
                 <div>
@@ -241,7 +251,7 @@ function handleSubmit(e){
                     placeholder="0"
                     onChange={(e)=>handleChange(e)}
                     />
-                    <p>{errors.velocidad}</p>
+                    {/* <p>{errors.velocidad}</p> */}
                 </div>
 
                 <div>
@@ -253,10 +263,8 @@ function handleSubmit(e){
                     placeholder="0"
                     onChange={(e)=>handleChange(e)}
                     />
-                    <p>{errors.peso}</p>
+                    {/* <p>{errors.peso}</p> */}
                 </div>
-
-
 
                 <div>
                     <label>Altura: </label>
@@ -267,7 +275,7 @@ function handleSubmit(e){
                     placeholder="0"
                     onChange={(e)=>handleChange(e)}
                     />
-                    <p>{errors.altura}</p>
+                    {/* <p>{errors.altura}</p> */}
                 </div>
 
                 {/* <div>
@@ -283,9 +291,9 @@ function handleSubmit(e){
                     <div>{input.tipo.map((e)=> e + " /")}<button onClick={(e)=>handleDelete(e)}>clean</button></div> 
                 </div> */}
 
-                <div>
+                <div >
                 {types.map((p,i)=>(
-                    <div key={i}>
+                    <div key={i} className="create_check">
                         <input 
                             type="checkbox" 
                             name={p}
@@ -296,15 +304,27 @@ function handleSubmit(e){
                             <label>{p}</label>
                     </div>
                ))}
-                    
                 </div>
-
+               {/* <p>{errors.tipo}</p> */}
 
                 <button type="submit">Crear</button>
             </form>
+
+
             </div>
 
+            <div className="create_errors">
+            <p>{errors.nombre}</p>
+            <p>{errors.vida}</p>
+            <p>{errors.fuerza}</p>
+            <p>{errors.defensa}</p>
+            <p>{errors.velocidad}</p>
+            <p>{errors.peso}</p>
+            <p>{errors.altura}</p>
+            <p>{errors.tipo}</p>
+            </div>
         </div>
+        
     )
 }
 

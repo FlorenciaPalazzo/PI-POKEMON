@@ -14,7 +14,7 @@ import './navBar.css'
 
 
 export default function NavBar() {
-
+ 
   const types= useSelector((state)=> state.pokemon_types)
   
   const dispatch  = useDispatch()
@@ -28,33 +28,32 @@ export default function NavBar() {
 
   
   function handleClick(e){
-    e.preventDefault();
-    
+    e.preventDefault(); 
     dispatch(getAllPokemons())
   }
   
  function handleTypes(e){
   e.preventDefault();
+  dispatch(filterPokemonsbyType(e.target.value))
   
-    dispatch(filterPokemonsbyType(e.target.value))
+ 
   }
 
 function handleFilterCreated(e){
   e.preventDefault();
+  dispatch(filterCreated(e.target.value))
   
-    dispatch(filterCreated(e.target.value))
   }
 
 
   function handlefilterOrderAZ(e){
-    e.preventDefault()
-    
+    e.preventDefault() 
     dispatch(filterOrder(e.target.value))
+   
   }
 
   function handlefilterOrderFuerza(e){
     e.preventDefault()
-    
     dispatch(filterOrderFuerza(e.target.value))
     
   }
@@ -65,22 +64,14 @@ function handleFilterCreated(e){
    
     <div className='bg'>
      
-            <div className='alineado'>
-                <Link to='/home' ><button onClick={(e)=> handleClick(e)}>POKEHOME</button></Link>
-            </div>
-
-
-            <div className='alineado'>
-               <Search/>
+            <div >
+                <Link to='/home' ><button className='navbar_inicio' onClick={(e)=> handleClick(e)} >Inicio</button></Link>
             </div>
             
             <div className='alineado'>
-              <Link to='/home/create'><button>Crea tu pokeamigo</button></Link>
+              <Link to='/home/create'><button>Crea un Pokemon</button></Link>
              </div>
             
-           
-        
-           
           <div className='alineado'>
               <select onChange={(e)=> handlefilterOrderAZ(e)}>
                   <option value="">Orden Alfabético:</option> 
@@ -118,6 +109,9 @@ function handleFilterCreated(e){
               </select>
             </div>
 
+            <div className='alineado'>
+               <Search/>
+            </div>
     </div>
     )
   }

@@ -18,6 +18,9 @@
     align-items: center;
     /* flex-direction: row; */
     
+
+
+    
 }
 .card_image{
     height:35%;
@@ -30,6 +33,19 @@
 }
 .card_titulo{
    
-    margin-top: .5rem;
+    margin-top:0.5rem;
     margin-bottom: 2.2rem;
+    
+
+ 
+}
+a:link, a:visited, a:active {
+    text-decoration:none;
+    color: black;
+}
+
+.card_tipo{
+    color: black;
+    font-size:15px;
+
 }
