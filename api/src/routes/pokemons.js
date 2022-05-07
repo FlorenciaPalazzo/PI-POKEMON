@@ -237,7 +237,7 @@ router.post('/',async (req, res,next) => {
     }
 
     if(!img){
-        img ="https://pngimg.com/uploads/pokemon/pokemon_PNG107.png"
+        img ="https://i.gifer.com/6Dnm.gif"
     }     
     try{
 

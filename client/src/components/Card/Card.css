@@ -16,11 +16,7 @@
     background-position: center center;
     opacity: .90;
     align-items: center;
-    /* flex-direction: row; */
-    
-
-
-    
+    /* flex-direction: row; */    
 }
 .card_image{
     height:35%;
@@ -28,8 +24,7 @@
     margin-top: -1rem; 
     padding: 0.1rem;
     box-sizing: border-box;
-
-    
+   
 }
 .card_titulo{
    

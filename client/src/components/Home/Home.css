@@ -2,69 +2,87 @@
 .bg{
     background-color: transparent;
     height: 5rem;
-    position: relative;
     
+    
+}
+.navbar_inicio_box{
+    /* background-color: rgba(137, 43, 226, 0.561); */
+    width:150px;
+       
 }
 
 .navbar_btn_inicio{
-    height:3rem;
-    width:6rem;
-    float: left;
-    background-color: transparent; 
-    color: #ffffff;
+    height:60px;
+    width:60px;
+    
+    background-image: url('../../img/pokebola-icon.png');
+    background-size: cover;
+    opacity: 0.9;
     border: 0.1px solid #ffffff;
     font-size: 15px;
-    
     box-shadow: 0 6px 6px rgba(255, 255, 255, 0.6);
-    margin-top: 12px;
-    margin-bottom: auto;
-    margin-left: 50px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 30px;
+    padding: 5px;
+   
 }
 
  
 .navbar_alineado{
- position: relative; 
- 
+ position: absolute; 
+ /* background-color: rgb(45, 59, 11); */
  height: 70px;
+ width: 500px;
+ margin-left:550px;
+ margin-top: -70px; 
+
 }
+
 
 .navbar_select{
     display: inline-block;
     margin-left:5px;
     margin-right: 5px;
     margin-top:25px;
-    
+    cursor: pointer;
 }
 
 .navbar_select_design{
     border: none;
     background-color: rgba(255, 255, 255, 0.30);
-    color: rgb(231, 231, 231);
+    color: rgb(0, 0, 0);
     height: 2rem;
     border-radius:5px ;
 }
 
-.search_box{
-    margin-right: 50px;
-   margin-top: -3rem;
+.navbar_btn_crear_box{
+  
+    /* background-color: blue; */
+    height: 5rem;
+    width: 200px;
+    margin-left:250px;
+    margin-top: -80px;
+    
 }
-
 .navbar_btn_crear{
     
     height:2rem;
     width:10rem;
-    background-color: transparent;  
     color: #ffffff; 
     border: none; 
     font-size: 0.9rem; 
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.30);  
     border-radius:5px ; 
-    float: left; 
-    margin-left: 200px;
-    margin-top: 22px;
-       
+    margin-top: 35px;   
 } 
+
+.search_box{
+    margin-right: 50px;
+   margin-top: -3rem;
+   position: relative;
+}
 
 /* --------------------------- */
 
@@ -76,9 +94,13 @@
    background-attachment: fixed;
    height:100vh;
    padding: 1rem,0rem;
-   box-sizing: border-box;
-   
-  
+   box-sizing: border-box;  
+}
+
+.home_cargadp_box{
+    height: 100px;
+    margin-top: 100px;
+    color: white;
 }
 
 

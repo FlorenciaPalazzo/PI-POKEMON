@@ -85,8 +85,8 @@ function handleFilterCreated(e){
       
     <div className='bg'>
      
-      <div >
-          <Link to='/home' ><button className='navbar_btn_inicio' onClick={(e)=> handleClick(e)} >Inicio</button></Link>
+      <div className="navbar_inicio_box">
+          <Link to='/home' ><button className='navbar_btn_inicio' onClick={(e)=> handleClick(e)} ></button></Link>
       </div>
       
       <div className="navbar_btn_crear_box">
@@ -144,19 +144,23 @@ function handleFilterCreated(e){
     </div>
 
 
-      <div>
+    <div>
         <Pagination
         pokemonsForPage={pokemonsForPage}
         allPokemons={allPokemons.length}
         pagination={pagination}
         />    
-          { currentPokemons?
+          { currentPokemons.length?
         currentPokemons.map(p => <Card 
           nombre={p.nombre} img={p.img} tipo={p.tipo} id={p.id} key={p.id}
         />  
           )
           :
-          (<h1>Cargando....</h1>)         
+          <div className="home_cargadp_box">
+          <img src='https://i.gifer.com/DD0.gif' width= '150px' alt='cargandoo..' />
+          <h2>Cargando pagina...</h2>
+          </div>
+          
         }   
       </div>
 
