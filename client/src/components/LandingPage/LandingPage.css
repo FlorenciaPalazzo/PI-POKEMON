@@ -8,23 +8,44 @@
    position: absolute;
 
 }
+
+.landing_titulo{
+	/* background-color: white; */
+	width: 500px;
+	margin-left:200px;
+	margin-top: 300px;
+	
+}
+
+.landing_h1{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+}
+.landing_h3{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+}
+
+
+.landing_button{
+	/* background-color: green; */
+	width: 500px;
+	margin-left: 200px;
+	margin-top: 100px;
+}
 .myButton {
 	box-shadow: 3px 4px 0px 0px #ff1500;
 	background:linear-gradient(to bottom, #c62d1f 5%, #ff4a3d 100%);
 	background-color:#c62d1f;
 	border-radius:18px;
 	border:1px solid #e63d31;
-	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
 	font-size:20px;
 	padding:12px 44px;
 	text-decoration:none;
-	text-shadow:0px 1px 0px #810e05;
-    margin-top: 30rem;
-    margin-right: 60rem;
-	
+	text-shadow:0px 1px 0px #810e05;	
 }
 .myButton:hover {
 	background:linear-gradient(to bottom, #ff4a3d 5%, #c62d1f 100%);

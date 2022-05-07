@@ -1,6 +1,6 @@
 
 .navbar_bg{
-    background-color: rgba(137, 43, 226, 0.334);
+    background-color: transparent;
     height: 5rem;
     
     
@@ -44,16 +44,18 @@
     display: inline-block;
     margin-left:5px;
     margin-right: 5px;
-    margin-top:20px;
+    margin-top:40px;
     cursor: pointer;
 }
 
 .navbar_select_design{
     border: none;
-    background-color: rgba(255, 255, 255, 0.30);
-    color: rgb(0, 0, 0);
+    background-color: rgba(74, 4, 112, 0.447);
+    color: rgb(255, 255, 255);
     height: 2rem;
     border-radius:5px ;
+    border: dotted 1px;
+    border-color: #ffffff;
 }
 
 .navbar_btn_crear_box{
@@ -80,7 +82,7 @@
 
 .search_box{
     margin-right: 50px;
-   margin-top: -3rem;
+   margin-top: -1.5rem;
    position: relative;
 }
 

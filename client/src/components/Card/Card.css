@@ -18,6 +18,11 @@
     align-items: center;
     /* flex-direction: row; */    
 }
+
+.card:hover {
+    opacity: 0.8;
+    transform: scale(1.10);
+   }
 .card_image{
     height:35%;
     width: auto;

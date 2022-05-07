@@ -19,12 +19,7 @@ export default function NavBar({setCurrentPage}) {
     
   },[dispatch])
 
-  
-  // function handleClick(e){
-  //   e.preventDefault(); 
-  //   dispatch(getAllPokemons())
-  // }
-  
+
  function handleTypes(e){
   e.preventDefault();
   dispatch(filterPokemonsbyType(e.target.value))
@@ -55,15 +50,7 @@ function handleFilterCreated(e){
   return(
    
     <div className="navbar_alineado">
-     
-            {/* <div >
-                <Link to='/home' ><button className='navbar_btn_inicio' onClick={(e)=> handleClick(e)} ></button></Link>
-            </div>
-            
-            <div className="navbar_btn_crear_box">
-              <Link to='/home/create'><button>Crea un Pokemon</button></Link>
-             </div> */}
-            
+      
           <div className="navbar_select">
               <select className="navbar_select_design" onChange={(e)=> handlefilterOrderAZ(e)}>
                   <option value="">Orden Alfabético:</option> 
@@ -101,9 +88,6 @@ function handleFilterCreated(e){
               </select>
             </div>
 
-            {/* <div className='search_box'>
-               <Search/>
-            </div> */}
     </div>
     )
   }

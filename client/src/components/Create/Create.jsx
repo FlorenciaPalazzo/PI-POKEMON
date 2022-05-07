@@ -70,6 +70,8 @@ export function validate(input){
       //Tipo
         if(input.tipo.length === 0 ){
         errors.tipo = 'Selecciona al menos 1 tipo de pokemon' 
+        }else if(input.tipo.length  > 2){
+            errors.tipo = 'Se puede seleccionar solo 2 tipos por pokemon'
         }
          
 

@@ -25,9 +25,6 @@ export default function Search(){
         SetNombre("")
     }
  
-    
-    
-
     return(
         <div>
             <form>
