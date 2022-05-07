@@ -1,6 +1,6 @@
 
-.bg{
-    background-color: transparent;
+.navbar_bg{
+    background-color: rgba(137, 43, 226, 0.334);
     height: 5rem;
     
     
@@ -31,11 +31,11 @@
  
 .navbar_alineado{
  position: absolute; 
- /* background-color: rgb(45, 59, 11); */
+ /* background-color: rgb(160, 209, 37); */
  height: 70px;
  width: 500px;
  margin-left:550px;
- margin-top: -70px; 
+ margin-top: -63px; 
 
 }
 
@@ -44,7 +44,7 @@
     display: inline-block;
     margin-left:5px;
     margin-right: 5px;
-    margin-top:25px;
+    margin-top:20px;
     cursor: pointer;
 }
 
@@ -62,7 +62,7 @@
     height: 5rem;
     width: 200px;
     margin-left:250px;
-    margin-top: -80px;
+    margin-top: -100px;
     
 }
 .navbar_btn_crear{
@@ -75,7 +75,7 @@
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.30);  
     border-radius:5px ; 
-    margin-top: 35px;   
+    margin-top: 60px;   
 } 
 
 .search_box{

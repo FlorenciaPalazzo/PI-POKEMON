@@ -4,10 +4,12 @@ import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { Link } from "react-router-dom";
 import Card from "../Card/Card";
-import { filterPokemonsbyType, getAllPokemons,getPokemonsType, filterCreated, filterOrder, filterOrderFuerza} from '../../redux/actions';
+import {getAllPokemons,getPokemonsType} from '../../redux/actions';
 
 import Pagination from "../Pagination/Pagination";
 import Search from '../Search/Search'
+
+import NavBar from "../Navbar/NavBar";
 
 import './Home.css'
 
@@ -45,45 +47,47 @@ export default function Home() {
     e.preventDefault(); 
     dispatch(getAllPokemons())
   }
-  
- function handleTypes(e){
-  e.preventDefault();
-  dispatch(filterPokemonsbyType(e.target.value))
-  setCurrentPage(1)
-  setOrder(`Ordenado ${e.target.value}`)
-  }
 
-function handleFilterCreated(e){
-  e.preventDefault();
-  dispatch(filterCreated(e.target.value))
-  setCurrentPage(1)
-  setOrder(`Ordenado ${e.target.value}`)
-  }
+  //#region 
+//  function handleTypes(e){
+//   e.preventDefault();
+//   dispatch(filterPokemonsbyType(e.target.value))
+//   setCurrentPage(1)
+//   setOrder(`Ordenado ${e.target.value}`)
+//   }
+
+// function handleFilterCreated(e){
+//   e.preventDefault();
+//   dispatch(filterCreated(e.target.value))
+//   setCurrentPage(1)
+//   setOrder(`Ordenado ${e.target.value}`)
+//   }
 
 
-  function handlefilterOrderAZ(e){
-    e.preventDefault() 
-    dispatch(filterOrder(e.target.value))
-    setCurrentPage(1)
-    setOrder(`Ordenado ${e.target.value}`)
+//   function handlefilterOrderAZ(e){
+//     e.preventDefault() 
+//     dispatch(filterOrder(e.target.value))
+//     setCurrentPage(1)
+//     setOrder(`Ordenado ${e.target.value}`)
    
-  }
+//   }
 
-  function handlefilterOrderFuerza(e){
-    e.preventDefault()
-    dispatch(filterOrderFuerza(e.target.value))
-     setCurrentPage(1)
-  setOrder(`Ordenado ${e.target.value}`)
+//   function handlefilterOrderFuerza(e){
+//     e.preventDefault()
+//     dispatch(filterOrderFuerza(e.target.value))
+//      setCurrentPage(1)
+//   setOrder(`Ordenado ${e.target.value}`)
     
-  }
+//   }
+//#endregion
 ////////////////////////////////////////
 
     return (
       
-    <div className="home_background">
+  <div className="home_background">
 
       
-    <div className='bg'>
+    <div className='navbar_bg'>
      
       <div className="navbar_inicio_box">
           <Link to='/home' ><button className='navbar_btn_inicio' onClick={(e)=> handleClick(e)} ></button></Link>
@@ -93,7 +97,8 @@ function handleFilterCreated(e){
         <Link to='/home/create'><button className="navbar_btn_crear" >Crea un Pokemon</button></Link>
       </div>
 
-    <div className="navbar_alineado">
+//#region 
+    {/* <div className="navbar_alineado">
 
       <div className="navbar_select">
           <select  className="navbar_select_design" onChange={(e)=> handlefilterOrderAZ(e)}>
@@ -132,16 +137,18 @@ function handleFilterCreated(e){
         </select>
       </div>
       
+      </div> */}
+//#endregion
+      
+      <div>
+        <NavBar setCurrentPage={setCurrentPage}/>
       </div>
-
 
       <div className='search_box'>
           <Search/>
       </div>
 
-      
-
-    </div>
+   </div>
 
 
     <div>

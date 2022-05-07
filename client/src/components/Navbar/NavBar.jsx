@@ -1,19 +1,12 @@
 import React from 'react'
-
 import { useDispatch, useSelector } from 'react-redux';
 import {useEffect} from 'react'
-import {Link} from 'react-router-dom'
-
-import { filterPokemonsbyType, getAllPokemons,getPokemonsType, filterCreated, filterOrder, filterOrderFuerza} from '../../redux/actions';
-import Search from '../Search/Search'
+import { filterPokemonsbyType,getPokemonsType, filterCreated, filterOrder, filterOrderFuerza} from '../../redux/actions';
 
 import './navBar.css'
 
 
-
-
-
-export default function NavBar() {
+export default function NavBar({setCurrentPage}) {
  
   const types= useSelector((state)=> state.pokemon_types)
   
@@ -27,53 +20,52 @@ export default function NavBar() {
   },[dispatch])
 
   
-  function handleClick(e){
-    e.preventDefault(); 
-    dispatch(getAllPokemons())
-  }
+  // function handleClick(e){
+  //   e.preventDefault(); 
+  //   dispatch(getAllPokemons())
+  // }
   
  function handleTypes(e){
   e.preventDefault();
   dispatch(filterPokemonsbyType(e.target.value))
-  
- 
+  setCurrentPage(1)
   }
 
 function handleFilterCreated(e){
   e.preventDefault();
   dispatch(filterCreated(e.target.value))
-  
+  setCurrentPage(1)
   }
 
 
   function handlefilterOrderAZ(e){
     e.preventDefault() 
     dispatch(filterOrder(e.target.value))
-   
+    setCurrentPage(1) 
   }
 
   function handlefilterOrderFuerza(e){
     e.preventDefault()
     dispatch(filterOrderFuerza(e.target.value))
-    
+    setCurrentPage(1) 
   }
 
   
 
   return(
    
-    <div className='bg'>
+    <div className="navbar_alineado">
      
-            <div >
-                <Link to='/home' ><button className='navbar_inicio' onClick={(e)=> handleClick(e)} >Inicio</button></Link>
+            {/* <div >
+                <Link to='/home' ><button className='navbar_btn_inicio' onClick={(e)=> handleClick(e)} ></button></Link>
             </div>
             
-            <div className='alineado'>
+            <div className="navbar_btn_crear_box">
               <Link to='/home/create'><button>Crea un Pokemon</button></Link>
-             </div>
+             </div> */}
             
-          <div className='alineado'>
-              <select onChange={(e)=> handlefilterOrderAZ(e)}>
+          <div className="navbar_select">
+              <select className="navbar_select_design" onChange={(e)=> handlefilterOrderAZ(e)}>
                   <option value="">Orden Alfabético:</option> 
                   <option value={'all'}>Todos</option>
                   <option value={'asc'}>Ascendente</option>
@@ -82,8 +74,8 @@ function handleFilterCreated(e){
             </div> 
 
             
-          <div className='alineado'>
-              <select onChange={(e)=> handlefilterOrderFuerza(e)}>
+          <div className="navbar_select">
+              <select className="navbar_select_design" onChange={(e)=> handlefilterOrderFuerza(e)}>
                   <option value="">Orden Fuerza:</option> 
                   <option value={'all'}>Todos</option>
                   <option value={'mayor'}>Mayor</option>
@@ -92,8 +84,8 @@ function handleFilterCreated(e){
             </div> 
           
 
-            <div className='alineado'>
-              <select onChange={(e)=> handleTypes(e)}>
+            <div className="navbar_select">
+              <select className="navbar_select_design" onChange={(e)=> handleTypes(e)}>
                                   <option value="">Tipo:</option> 
                  {types?.map((p, i )=>(<option key={i}value={p}>{p}</option>))}  
                   
@@ -101,17 +93,17 @@ function handleFilterCreated(e){
             </div> 
 
 
-            <div className='alineado'>
-            <select onChange={(e)=> handleFilterCreated(e)}>
+            <div className="navbar_select">
+            <select className="navbar_select_design" onChange={(e)=> handleFilterCreated(e)}>
                 <option value={"All"}>Todos</option>
                 <option value={"created"}>Creado</option>
                 <option value={"api"}>Existente</option>
               </select>
             </div>
 
-            <div className='alineado'>
+            {/* <div className='search_box'>
                <Search/>
-            </div>
+            </div> */}
     </div>
     )
   }
