@@ -31,13 +31,17 @@ export function getPokemonsId(id){
         } 
 }
 
+
 export function getPokemonsName(nombre){
-        
-    return async function(dispatch){ 
+  return async function(dispatch){ 
+      try{  
         const response =  await axios.get(`http://localhost:3001/pokemons?nombre=${nombre}`) 
         const payload = await response.data
-        dispatch({type: GET_POKEMONS_NAME , payload })
-        } 
+        return dispatch({type: GET_POKEMONS_NAME , payload })
+        }catch(e){
+          alert('Pokemon no encontrado')
+        }
+      }   
 }
 
 

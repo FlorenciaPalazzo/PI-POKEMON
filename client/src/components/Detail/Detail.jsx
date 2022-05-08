@@ -41,6 +41,8 @@ export  default function Detail (){
               </div>
 
              <div className="detail_card_box">
+
+                 <h3 className="detail_card_detalle" >ID: {detailPokemon.id}</h3>
                 <h3 className="detail_card_detalle" >Vida: {detailPokemon.vida}</h3>
                 <h3 className="detail_card_detalle">Fuerza: {detailPokemon.fuerza}</h3>
                 <h3 className="detail_card_detalle">Defensa: {detailPokemon.defensa}</h3>
