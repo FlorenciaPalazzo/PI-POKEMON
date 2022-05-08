@@ -74,8 +74,11 @@ function handleFilterCreated(e){
             <div className="navbar_select">
               <select className="navbar_select_design" onChange={(e)=> handleTypes(e)}>
                                   <option value="">Tipo:</option> 
-                 {types?.map((p, i )=>(<option key={i}value={p}>{p}</option>))}  
-                  
+                 {
+                 types?.map((p, i )=>(<option key={i}value={p}>{p}</option>))
+
+                 } 
+                       
               </select> 
             </div> 
 

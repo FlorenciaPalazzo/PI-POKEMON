@@ -53,27 +53,37 @@ const initialState = {
      
       const allPokemonsType = state.pokemons_copy
      const allPokemonsType2= allPokemonsType.filter((t) =>{
-        if(t.tipo?.includes(payload)){
-          return t
-        }
-      })   
-      return{  
+          if(t.tipo?.includes(payload)){
+            return t
+          }
+        })  
+
+      if(allPokemonsType2.length === 0){
+        alert('No hay pokemones con ese tipo')
+      }else{
+        return{  
         ...state,
          pokemons: allPokemonsType2  
-         
+          }
       }
-
-
+      
 
       ///FILTER CREATED///   
       case FILTER_CREATED :
         const allPokemons= state.pokemons_copy
     
         if(payload === "created"){
-          return {
-            ...state,
-            pokemons: allPokemons.filter( e => typeof e.id !== "number" )
-          }
+            const arr= allPokemons.filter( e => typeof e.id !== "number" )
+
+            if(arr.length === 0){
+              alert('No hay pokemons creados')
+              
+            }else{
+              return {
+                ...state,
+                pokemons: arr
+              }
+            }
         }
         if(payload=== "api"){
           return{ 
@@ -130,6 +140,7 @@ const initialState = {
               pokemons: [...state.pokemons_copy]
             }
           }
+          
           if(payload === "menor"){
             return{
               ...state,
@@ -139,7 +150,9 @@ const initialState = {
                 return 0
               })
             }
-          }     if(payload === "mayor"){
+          }     
+          
+          if(payload === "mayor"){
             return{
               ...state,
               pokemons: [...state.pokemons_copy].sort((a,b)=>{
@@ -156,12 +169,14 @@ const initialState = {
           }
             
             
-        
-    ///PARA LIMPIAR LA PAGINA///
-      case CLEAR_PAGE: return{
-        ...state,
-        pokemon_detail:[]
-      }
+            
+        ///PARA LIMPIAR LA PAGINA///
+          case CLEAR_PAGE: return{
+            ...state,
+            pokemon_detail:[]
+          }
+
+          
       default:
         return state;
     }

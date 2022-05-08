@@ -74,9 +74,7 @@ export function validate(input){
             errors.tipo = 'Se puede seleccionar solo 2 tipos por pokemon'
         }
          
-
-        
-        return errors   
+    return errors   
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -144,17 +142,13 @@ function handleCheck(e){
           tipo: input.tipo.filter((t)=> t !== e.target.name )    
       }))
 
-
   }
-
-
-
 }
 
 
 function handleSubmit(e){
  e.preventDefault()  
-    if(input.nombre && input.vida && input.fuerza&& input.defensa && input.velocidad && input.tipo &&input.altura && input.peso &&  
+    if(input.nombre && input.vida && input.fuerza && input.defensa && input.velocidad && input.tipo &&input.altura && input.peso &&  
         !errors.nombre && !errors.fuerza  && !errors.defensa  && !errors.velocidad  && !errors.altura && !errors.peso  && !errors.tipo){
         dispatch(postPokemon(input))
         alert("Pokemon creado")
@@ -319,15 +313,3 @@ function handleSubmit(e){
 
 
 
-{/* <div>
-
-    <select onChange={(e)=>handleSelect(e)}>   
-                            <option value="">Tipo:</option> 
-    {
-    types?.map((p, i )=>(<option key={i} value={p}>{p}</option>))
-    }
-    </select>
-    <p>{errors.tipo}</p>
-
-    <div>{input.tipo.map((e)=> e + " /")}<button onClick={(e)=>handleDelete(e)}>clean</button></div> 
-</div> */}
