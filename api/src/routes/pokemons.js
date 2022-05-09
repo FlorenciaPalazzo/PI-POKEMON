@@ -3,8 +3,7 @@ const axios = require('axios');
 const {Pokemon,Type}= require('../db');
 const router = Router();
 
-//Trae la info de la api y luego concatena con db
-//Busca por nombre en la Api y en la db
+//Trae la info de la api 
 
 
 const getApi = async ()=> {
@@ -65,7 +64,7 @@ const getDB = async ()=>{
   getData = getData.map(({
     id,
     img , 
-    types, // ES EL NOOMBRE DE LA TABLA DE SQL
+    types, 
     nombre, 
     vida,
     fuerza, 
@@ -104,7 +103,7 @@ const getAllPokemonsApiDB= async() =>{
 }
 
 
-
+//allpokemons + nombre
 router.get('/',async (req, res) => {
     
 try{
@@ -230,7 +229,7 @@ router.post('/',async (req, res,next) => {
     res.send('Pokemon Creado')
 
 }catch (err){
-    // next(err)
+ 
     res.status(404).send(err)
 }
 

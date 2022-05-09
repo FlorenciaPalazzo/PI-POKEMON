@@ -14,11 +14,11 @@ import  axios from 'axios';
 
 export function getAllPokemons(){
         
-        return async function(dispatch){ 
-            const response =  await axios.get(`http://localhost:3001/pokemons`) 
-            const payload = await response.data
-            dispatch({type: GET_ALL_POKEMONS , payload })
-            }      
+    return async function(dispatch){ 
+        const response =  await axios.get(`http://localhost:3001/pokemons`) 
+        const payload = await response.data
+        dispatch({type: GET_ALL_POKEMONS , payload })
+        }      
 }
 
 
