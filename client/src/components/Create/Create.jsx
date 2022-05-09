@@ -24,7 +24,7 @@ export function validate(input){
         }else if(!/^[0-9]*$/.test(input.vida)){
             errors.vida = 'Debe ser un numero positivo'    
         }else if(input.vida < 10 || input.vida >= 100){
-            errors.vida='Numero inválido, debe ser: igual o mayor a 10 y menor a 100'
+            errors.vida='Numero de vida inválido, debe ser: igual o mayor a 10 y menor a 100'
         }
     //Fuerza
         if(!input.fuerza){
@@ -32,7 +32,7 @@ export function validate(input){
         }else if(!/^[0-9]*$/.test(input.fuerza)){
             errors.fuerza = 'Debe ser un numeropositivo'
         }else if(input.fuerza < 20 || input.fuerza >= 100){
-            errors.fuerza='Numero inválido, debe ser: igual o mayor a 20 y menor a 100'
+            errors.fuerza='Numero de fuerza inválido, debe ser: igual o mayor a 20 y menor a 100'
         }
     //Defensa
         if(!input.defensa){
@@ -40,7 +40,7 @@ export function validate(input){
         }else if(!/^[0-9]*$/.test(input.defensa)){
             errors.defensa = 'Debe ser un numero positivo'
         }else if(input.defensa < 30 || input.defensa >= 100){
-            errors.defensa='Numero inválido, debe ser: igual o mayor a 30 y menor a 100'
+            errors.defensa='Numero de defensa inválido, debe ser: igual o mayor a 30 y menor a 100'
         }
      //Velocidad
         if(!input.velocidad){
@@ -48,7 +48,7 @@ export function validate(input){
         }else if(!/^[0-9]*$/.test(input.velocidad)){
             errors.velocidad = 'Debe ser un numero positivo'
         }else if(input.velocidad < 50 || input.velocidad >= 300){
-            errors.velocidad='Numero inválido, debe ser: igual o mayor a 50 y menor a 300'
+            errors.velocidad='Numero  de velocidad inválido, debe ser: igual o mayor a 50 y menor a 300'
         }
      //Altura
          if(!input.altura){
@@ -56,7 +56,7 @@ export function validate(input){
         }else if(!/^[0-9]*$/.test(input.altura)){
             errors.altura = 'Debe ser un numero positivo'
         }else if(input.altura < 1 || input.altura >= 100){
-            errors.altura='Numero inválido, debe ser: igual o mayor a 1 y menor a 100'
+            errors.altura='Numero de altura inválido, debe ser: igual o mayor a 1 y menor a 100'
         }
      //Peso
         if(!input.peso){
@@ -64,7 +64,7 @@ export function validate(input){
         }else if(!/^[0-9]*$/.test(input.peso)){
             errors.peso = 'Debe ser un numero positivo'
         }else if(input.peso < 1 || input.peso >= 500){
-            errors.peso='Numero inválido, debe ser:igual o mayor a 1 y menor a 500'
+            errors.peso='Numero de peso inválido, debe ser:igual o mayor a 1 y menor a 500'
         }
 
       //Tipo
@@ -99,9 +99,9 @@ export default function Create(){
  })
  
 
- useEffect(()=>{
-     dispatch(getPokemonsType())
-    },[]) 
+//  useEffect(()=>{
+//      dispatch(getPokemonsType())
+//     },[]) 
     
 
  function handleChange(e){
@@ -149,7 +149,7 @@ function handleCheck(e){
 function handleSubmit(e){
  e.preventDefault()  
     if(input.nombre && input.vida && input.fuerza && input.defensa && input.velocidad && input.tipo &&input.altura && input.peso &&  
-        !errors.nombre && !errors.fuerza  && !errors.defensa  && !errors.velocidad  && !errors.altura && !errors.peso  && !errors.tipo){
+        !errors.nombre && !errors.fuerza  && !errors.vida && !errors.defensa  && !errors.velocidad  && !errors.altura && !errors.peso  && !errors.tipo){
         dispatch(postPokemon(input))
         alert("Pokemon creado")
         setInput({
