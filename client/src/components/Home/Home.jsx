@@ -23,7 +23,7 @@ export default function Home() {
   
   const[currentPage, setCurrentPage]= useState(1)
   const[pokemonsForPage, setPokemonsForPage]= useState(12)
-  const indexOfLastPokemon = currentPage * pokemonsForPage
+  const indexOfLastPokemon = currentPage * pokemonsForPage 
   const indexOfFirstCharacter = indexOfLastPokemon - pokemonsForPage
   const currentPokemons= allPokemons.slice(indexOfFirstCharacter, indexOfLastPokemon)
 

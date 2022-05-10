@@ -13,14 +13,12 @@ export default function Search(){
     
     const [nombre, SetNombre] = useState("")
 
-    const [loading, SetLoading] = useState(false)
-    const [error, SetError] = useState(false)
+ 
 
     function handleInputChange(e){
         e.preventDefault()
         SetNombre(e.target.value)
-        SetError(false)
-
+        
     }
 
     function handleSubmit(e){

@@ -11,7 +11,8 @@ import {
 
   POST_POKEMON,
 
-  CLEAR_PAGE,} from "../actions/action_types";
+  CLEAR_PAGE,
+  } from "../actions/action_types";
 const initialState = {
     pokemons: [],
     pokemons_copy:[],
@@ -98,7 +99,6 @@ const initialState = {
             pokemons: allPokemons,
           }
         }
-
 
 
         ///FILTER ORDER NAME A-Z///

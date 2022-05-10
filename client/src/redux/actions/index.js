@@ -8,7 +8,8 @@ import {
   FILTER_CREATED,
   FILTER_ORDER,
   FILTER_ORDER_FUERZA,
-  POST_POKEMON } from "./action_types";
+  POST_POKEMON, 
+ } from "./action_types";
 import  axios from 'axios';
 
 
@@ -20,6 +21,7 @@ export function getAllPokemons(){
         dispatch({type: GET_ALL_POKEMONS , payload })
         }      
 }
+
 
 
 export function getPokemonsId(id){
@@ -95,8 +97,6 @@ export function filterOrderFuerza(payload){
     payload
   }
 }
-
-
 
 export function clearPage(){
     return {
