@@ -30,26 +30,34 @@
 .landing_button{
 	/* background-color: green; */
 	width: 500px;
-	margin-left: 200px;
-	margin-top: 100px;
+	
+	margin-left: 205px;
+	margin-top: 50px;
+	
 }
 .myButton {
-	box-shadow: 3px 4px 0px 0px #ff1500;
-	background:linear-gradient(to bottom, #c62d1f 5%, #ff4a3d 100%);
-	background-color:#c62d1f;
-	border-radius:18px;
-	border:1px solid #e63d31;
+	
+	
+	background-color:#c62d1f4d;
+	border-radius:70px;
+	border:1px solid #e63d3104;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
 	font-size:20px;
-	padding:12px 44px;
+	/* padding:12px 44px; */
 	text-decoration:none;
-	text-shadow:0px 1px 0px #810e05;	
+	text-shadow:0px 1px 0px #810e05;
+	background-image: url('../../img/pokebola-icon.png');
+	background-size: cover;
+	height: 100px;
+	width: 100px;
+
+
+
 }
 .myButton:hover {
-	background:linear-gradient(to bottom, #ff4a3d 5%, #c62d1f 100%);
-	background-color:#ff4a3d;
+	box-shadow: 4px 2px 31px 25px rgba(255, 255, 255, 0.6);
 }
 .myButton:active {
 	top:1px;

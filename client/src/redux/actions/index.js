@@ -8,7 +8,8 @@ import {
   FILTER_CREATED,
   FILTER_ORDER,
   FILTER_ORDER_FUERZA,
-  POST_POKEMON, 
+  POST_POKEMON,
+  DELETE_CARD 
  } from "./action_types";
 import  axios from 'axios';
 
@@ -104,7 +105,13 @@ export function clearPage(){
     }
   }
 
-
+  export function deleteCard(id){
+    return dispatch => {
+      return axios.delete(`http://localhost:3001/pokemons/${id}`)
+      .then(res =>dispatch({type: DELETE_CARD, payload:res.data}))
+      .catch((err)=> console.log(err))
+  }
+  }
 
 
 

@@ -111,11 +111,11 @@ try{
     let allDataApiDB = await getAllPokemonsApiDB();
 
     if(nombre){
-        let allDataName = await allDataApiDB.filter(p =>p.nombre.toLowerCase()===nombre.toLowerCase())
+        let allDataName = await allDataApiDB.filter(p =>p.nombre.toLowerCase().includes(nombre.toLowerCase()))
         console.log(nombre)
         console.log(allDataName)
             if(!allDataName.length){
-                return res.status(404).send('No existe el nombre del pokemon')    
+                return res.status(404).send(['No existe el nombre del pokemon'])    
             }
             
             res.status(200).send(allDataName) //devuelve el nombre del pokemon
@@ -234,6 +234,24 @@ router.post('/',async (req, res,next) => {
 }
 
 })
+
+
+//Delete
+router.delete('/:id',async (req, res) => {
+try{
+    const {id} = req.params
+
+    return Pokemon.destroy({
+        where:{id:id}
+    })
+
+}catch(e){
+   console.log('entro al catch')
+
+}
+
+})
+
 
 
 module.exports = router;

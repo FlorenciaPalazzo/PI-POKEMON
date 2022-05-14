@@ -10,7 +10,7 @@ import {
   FILTER_ORDER_FUERZA,
 
   POST_POKEMON,
-
+  DELETE_CARD,
   CLEAR_PAGE,
   } from "../actions/action_types";
 const initialState = {
@@ -175,6 +175,13 @@ const initialState = {
             ...state,
             pokemon_detail:[]
           }
+
+        //DELETE CARD
+        case DELETE_CARD: return{
+          ...state,
+         
+        }
+        
 
           
       default:

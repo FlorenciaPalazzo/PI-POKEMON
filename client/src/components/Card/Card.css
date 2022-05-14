@@ -26,15 +26,22 @@
 .card_image{
     height:35%;
     width: auto;
-    margin-top: -1rem; 
+    margin-top: -20px; 
     padding: 0.1rem;
     box-sizing: border-box;
+    /* background-color: rgb(225, 0, 255); */
    
 }
 .card_titulo{
    
     margin-top:0.5rem;
     margin-bottom: 2.2rem;
+    width: 120px;
+  
+   
+    /* background-color: aqua; */
+    float: left;
+    margin-left: 47px;
     
 
  
@@ -45,7 +52,31 @@ a:link, a:visited, a:active {
 }
 
 .card_tipo{
-    color: black;
+    
     font-size:15px;
+    margin-top: 40px;
+    /* background-color: blueviolet; */
 
+}
+
+.card_button{
+    border-radius: 50px;
+    width: 25px;
+    height: 25px;
+    float: left;
+    margin-top: 10px;
+    border: 0.1px solid #ffffff;
+    box-shadow: 0 6px 6px rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    background-image: url('../../img/rubi.png');
+    background-size: cover;
+    color: rgb(255, 255, 255); 
+    opacity: 0.9;
+    font-size: 15px;
+   
+}
+
+.card_box_tit_bot{
+    /* background-color: rgba(165, 42, 42, 0.453); */
+    height: 50px;
 }
