@@ -35,6 +35,7 @@ export function getPokemonsId(id){
 }
 
 
+
 export function getPokemonsName(nombre){
   return async function(dispatch){ 
       try{  
